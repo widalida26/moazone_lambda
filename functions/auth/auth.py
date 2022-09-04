@@ -18,7 +18,8 @@ def handler(event, context):
     }
     
     body = event['body']
-    print(body)
+    authcode = body['authcode']
+    print(authcode)
     
     return {
         'statusCode': 200,
