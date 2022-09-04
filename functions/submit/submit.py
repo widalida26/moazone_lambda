@@ -18,6 +18,9 @@ def dday_calculator(day):
 
 def handler(event, context):
     
+    body_data = json.loads(event["body"])
+    print(body_data)
+
     return {
         'statusCode': 201,
         'headers': {
@@ -28,7 +31,6 @@ def handler(event, context):
         'body': json.dumps({"event": event})
     }
 
-    body_data = json.loads(event["body"])
     user_id = body_data["user_id"]
     
     # users 동의 여부 업데이트
