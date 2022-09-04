@@ -22,8 +22,8 @@ jobs:
       - name: Build the Docker image
         run: |
           aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ env.ecr_repository }}
-          docker build -t root-handler . -f Dockerfile.root --platform=linux/amd64
-          docker tag root-handler:latest $ecr_repository/$image_name:latest
+          docker build -t $image_name . -f Dockerfile.root --platform=linux/amd64
+          docker tag $image_name:latest $ecr_repository/$image_name:latest
           docker push $ecr_repository/$image_name:latest
           aws lambda update-function-code --function-name root-handler --image-uri $ecr_repository/$image_name:latest
         env:
