@@ -9,20 +9,18 @@ engine = connect_engine()
 session = engine.sessionmaker()
 
 def handler(event, context):
+    body_data = json.loads(event["body"])
+    auth_code = body_data["authcode"]
+
     kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
     auth_data = {
         "grant_type" : "authorization_code",
         "client_id" : os.environ.get('KAKAO_REST_API_KEY'),
         "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
-        "code" : ''
+        "code" : auth_code
     }
-    
-    body = json.loads(event['body'])
-    print(type(body))
-    print(body["authcode"])
 
-    # authcode = body['authcode']
-    # print(authcode)
+    print(auth_data)
     
     return {
         'statusCode': 200,
