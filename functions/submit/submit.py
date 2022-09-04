@@ -18,9 +18,11 @@ def dday_calculator(day):
 
 def handler(event, context):
     
-    print(type(event))
     print(event)
-    #print(dt)
+    user_id = event["user_id"]
+    # users 동의 여부 업데이트
+    session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
+    session.commit()
 
     return {
         'statusCode': 201,
@@ -32,11 +34,6 @@ def handler(event, context):
         'body': json.dumps({"event": event})
     }
 
-    user_id = body_data["user_id"]
-    
-    # users 동의 여부 업데이트
-    session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
-    session.commit()
     
     # new survey 데이터 삽입
     dt = body_data["survey_data"]
