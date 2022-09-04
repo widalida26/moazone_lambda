@@ -16,7 +16,9 @@ def handler(event, context):
         "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
         "code" : ''
     }
-    print(event['body']['authcode'])
+    
+    body = event['body']
+    print(body)
     
     return {
         'statusCode': 200,
