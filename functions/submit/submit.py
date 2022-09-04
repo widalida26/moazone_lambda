@@ -18,8 +18,8 @@ def dday_calculator(day):
 
 def handler(event, context):
     
-    body_data = json.loads(event["body"])
-    print(body_data)
+    dt = json.loads(event)
+    print(dt)
 
     return {
         'statusCode': 201,
