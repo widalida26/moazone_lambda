@@ -1,10 +1,10 @@
-name: Docker Image CI for submit
+name: Docker Image CI for survey
 
 on:
   push:
-    branches: ['submit']
+    branches: ['survey']
   pull_request:
-    branches: ['submit']
+    branches: ['survey']
 
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
       - name: Build the Docker image
         run: |
           aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ env.ecr_repository }}
-          docker build -t $image_name . -f Dockerfile.submit --platform=linux/amd64
+          docker build -t $image_name . -f Dockerfile.survey --platform=linux/amd64
           docker tag $image_name:latest $ecr_repository/$image_name:latest
           docker push $ecr_repository/$image_name:latest
-          aws lambda update-function-code --function-name submit-handler --image-uri $ecr_repository/$image_name:latest
+          aws lambda update-function-code --function-name survey-handler --image-uri $ecr_repository/$image_name:latest
         env:
           ecr_repository: ${{ secrets.ECR_REPOSITORY }}
-          image_name: submit-handler
+          image_name: survey-handler
