@@ -37,9 +37,9 @@ def handler(event, context):
 
     # 새로운 id 삽입
     if len(existed) < 1: 
-        newUser = Users(user_id = user_id)
-        session.add(newUser)
-        session.commit()
+        # newUser = Users(user_id = user_id)
+        # session.add(newUser)
+        # session.commit()
         return {
             'statusCode': 200,
             'headers': {
