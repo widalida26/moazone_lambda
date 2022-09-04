@@ -5,6 +5,6 @@ def handler(event, context):
     return {
         'headers': {'Content-Type' : 'application/json'},
         'statusCode': 200,
-        'body': json.dumps({"message": "CI/CD!",
+        'body': json.dumps({"message": "Success!",
                             "event": event})
     }
