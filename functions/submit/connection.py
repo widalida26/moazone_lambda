@@ -12,7 +12,6 @@ db_url =  f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name
 
 class connect_engine:
     def __init__(self):
-        print(db_url)
         self.engine = create_engine(db_url, pool_recycle = 500)
 
     def sessionmaker(self):
