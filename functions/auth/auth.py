@@ -18,6 +18,17 @@ def handler(event, context):
         },
         'body': json.dumps('Hello from Lambda!')
     }
+
+# def handler(event, context):
+#     return {
+#         'statusCode': 200,
+#         'headers': {
+#             'Access-Control-Allow-Headers': 'Content-Type',
+#             'Access-Control-Allow-Origin': '*',
+#             'Access-Control-Allow-Methods': 'OPTIONS, GET'
+#         },
+#         'body': json.dumps('Hello from Lambda!')
+#     }
     # kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
     # auth_data = {
     #     "grant_type" : "authorization_code",
