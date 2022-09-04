@@ -9,20 +9,14 @@ engine = connect_engine()
 session = engine.sessionmaker()
 
 def handler(event, context):
-    return {
-        'headers': {'Content-Type' : 'application/json'},
-        'statusCode': 200,
-        'body': json.dumps({ "message": "Success!",
-                            "event": event })
+    kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
+    auth_data = {
+    "grant_type" : "authorization_code",
+    "client_id" : os.environ.get('KAKAO_REST_API_KEY'),
+    "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
+    "code" : ''
     }
-    # kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
-    # auth_data = {
-    # "grant_type" : "authorization_code",
-    # "client_id" : os.environ.get('KAKAO_REST_API_KEY'),
-    # "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
-    # "code" : authItem.authcode
-    # }
-    # print(auth_data)
+    return {'auth': auth_data, 'event': event}
 
     # # 인가 코드로 토큰 요청
     # response = requests.post(kakao_auth_url, data=auth_data)
