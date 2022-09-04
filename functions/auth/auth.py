@@ -42,7 +42,7 @@ def handler(event, context):
                 headers={'Authorization' : 'Bearer {}'.format(access_token)}
                 )
     user_id = user_profile.json()['id']
-    print(user_id)
+    print('userid', user_id)
 # def handler(event, context):
 #     return {
 #         'statusCode': 200,
