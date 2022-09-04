@@ -6,4 +6,8 @@ RUN pip3 install -r requirements.txt
 
 COPY ./functions/auth/auth.py ./
 
+COPY ./functions/auth/connection.py ./
+
+COPY ./functions/auth/models.py ./
+
 CMD [ "auth.handler" ]
