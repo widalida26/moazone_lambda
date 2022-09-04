@@ -17,8 +17,8 @@ def handler(event, context):
         "code" : ''
     }
     
-    body = event['body']
-    authcode = body.authcode
+    body = json.loads(event['body'])
+    authcode = body['authcode']
     print(authcode)
     
     return {
