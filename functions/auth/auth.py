@@ -35,6 +35,14 @@ def handler(event, context):
         },
         'body': json.dumps(event)
     }
+
+    # 토큰으로 유저 데이터 요청
+    user_profile = requests.get(
+                'https://kapi.kakao.com//v2/user/me', 
+                headers={'Authorization' : 'Bearer {}'.format(access_token)}
+                )
+    user_id = user_profile.json()['id']
+    print(user_id)
 # def handler(event, context):
 #     return {
 #         'statusCode': 200,
