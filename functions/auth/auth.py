@@ -19,7 +19,7 @@ def handler(event, context):
     
     body = json.loads(event['body'])
     print(type(body))
-    print(body.keys())
+    print(body["authcode"])
 
     # authcode = body['authcode']
     # print(authcode)
