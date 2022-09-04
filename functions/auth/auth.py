@@ -23,7 +23,7 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS, GET'
         },
-        'body': json.dumps(kakao_auth_url)
+        'body': json.dumps(auth_data)
     }
 # def handler(event, context):
 #     kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
