@@ -1,9 +1,9 @@
 FROM public.ecr.aws/lambda/python:3.9
 
-COPY ./lambda/root/requirements.txt ./
+COPY ./functions/root/requirements.txt ./
 
 RUN pip3 install -r requirements.txt
 
-COPY ./lambda/root/root.py ./
+COPY ./functions/root/root.py ./
 
 CMD [ "root.handler" ]
