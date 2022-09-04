@@ -17,27 +17,12 @@ def dday_calculator(day):
     return dday.days
 
 def handler(event, context):
-    print(type(event))
-    print(event)
-    # print(event['key1'])
-    # user_id = event["user_id"]
     # users 동의 여부 업데이트
     # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
     # session.commit()
 
-    return {
-        'statusCode': 201,
-        'headers': {
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS, POST'
-        },
-        'body': json.dumps({"event": event})
-    }
-
-    
     # new survey 데이터 삽입
-    dt = body_data["survey_data"]
+    dt = event["survey_data"]
     survey_info = SurveyInfo(
         gender = dt['gender'][0],
         car = dt['car'][0],
@@ -67,7 +52,7 @@ def handler(event, context):
         'headers': {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+            'Access-Control-Allow-Methods': 'OPTIONS, POST'
         },
-        'body': json.dumps({"message": "success:"})
+        'body': json.dumps({ "event" : 'success' })
     }
