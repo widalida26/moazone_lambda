@@ -3,8 +3,11 @@ import requests
 
 def handler(event, context):
     return {
-        'headers': {'Content-Type' : 'application/json'},
         'statusCode': 200,
-        'body': json.dumps({"message": "Success!",
-                            "event": event})
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+        },
+        'body': json.dumps('Hello from Lambda!')
     }
