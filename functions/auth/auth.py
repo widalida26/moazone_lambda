@@ -9,12 +9,19 @@ engine = connect_engine()
 session = engine.sessionmaker()
 
 def handler(event, context):
+    kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
+    auth_data = {
+        "grant_type" : "authorization_code",
+        "client_id" : os.environ.get('KAKAO_REST_API_KEY'),
+        "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
+        "code" : ''
+    }
     return {
         'statusCode': 200,
         'headers': {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+            'Access-Control-Allow-Methods': 'OPTIONS, POST, GET'
         },
         'body': json.dumps('Hello from Lambda!')
     }
