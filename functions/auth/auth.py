@@ -9,6 +9,7 @@ engine = connect_engine()
 session = engine.sessionmaker()
 
 def handler(event, context):
+    kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
     return {
         'statusCode': 200,
         'headers': {
@@ -16,7 +17,7 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS, GET'
         },
-        'body': json.dumps('Hello from Lambda!')
+        'body': json.dumps(kakao_auth_url)
     }
 # def handler(event, context):
 #     kakao_auth_url = 'https://kauth.kakao.com/oauth/token'
