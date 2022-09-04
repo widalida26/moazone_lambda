@@ -1,9 +1,9 @@
 FROM public.ecr.aws/lambda/python:3.9
 
-COPY ./lambda/auth/requirements.txt ./
+COPY ./functions/auth/requirements.txt ./
 
 RUN pip3 install -r requirements.txt
 
-COPY ./lambda/auth/auth.py ./
+COPY ./functions/auth/auth.py ./
 
 CMD [ "auth.handler" ]
