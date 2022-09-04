@@ -20,7 +20,11 @@ def handler(event, context):
         "code" : auth_code
     }
 
-    print(auth_data)
+    # 인가 코드로 토큰 요청
+    response = requests.post(kakao_auth_url, data=auth_data)
+    token_data = response.json()
+    access_token = token_data['access_token']
+    print(access_token)
     
     return {
         'statusCode': 200,
