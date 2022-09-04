@@ -47,7 +47,7 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'OPTIONS, POST, GET'
             },
-            'body': 'success'
+            'body': json.dumps({ "user_id" : user_id })
         }
     else:
         return {
