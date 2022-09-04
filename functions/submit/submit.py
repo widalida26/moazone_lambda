@@ -17,6 +17,17 @@ def dday_calculator(day):
     return dday.days
 
 def handler(event, context):
+    
+    return {
+        'statusCode': 201,
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+        },
+        'body': json.dumps({"event": event})
+    }
+
     body_data = json.loads(event["body"])
     user_id = body_data["user_id"]
     
