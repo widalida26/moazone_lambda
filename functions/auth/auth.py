@@ -18,8 +18,9 @@ def handler(event, context):
     }
     
     body = json.loads(event['body'])
-    authcode = body['authcode']
-    print(authcode)
+    print(body)
+    # authcode = body['authcode']
+    # print(authcode)
     
     return {
         'statusCode': 200,
