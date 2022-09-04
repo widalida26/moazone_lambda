@@ -31,7 +31,10 @@ def handler(event, context):
                 headers={'Authorization' : 'Bearer {}'.format(access_token)}
                 )
     user_id = user_profile.json()['id']
-    print('userid', user_id)
+
+    # # 유저 중복 참여 체크
+    existed = session.query(Users).filter(Users.user_id == user_id, Users.consent == 1).all()
+    print(existed)
 
     return {
         'statusCode': 200,
@@ -104,8 +107,7 @@ def handler(event, context):
     # if user_id == 2408139919:
     #     return {'user_id': user_id}
 
-    # # 유저 중복 참여 체크
-    # existed = session.query(Users).filter(Users.user_id == user_id, Users.consent == 1).all()
+
     # existed = session.query(Users).filter(Users.user_id == user_id, Users.consent == 1).all()
 
     # # 새로운 id 삽입
