@@ -17,8 +17,9 @@ def dday_calculator(day):
     return dday.days
 
 def handler(event, context):
-    
+    print(type(event))
     print(event)
+    print(event['key1'])
     # user_id = event["user_id"]
     # users 동의 여부 업데이트
     # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
@@ -29,7 +30,7 @@ def handler(event, context):
         'headers': {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+            'Access-Control-Allow-Methods': 'OPTIONS, POST'
         },
         'body': json.dumps({"event": event})
     }
