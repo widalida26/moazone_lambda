@@ -57,7 +57,7 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'OPTIONS, POST, GET'
             },
-            'body': {'message': 'already existed'}
+            'body': json({ 'message': 'already existed' })
         }
 
     # # id 예외처리 >>> 나중에 삭제
