@@ -4,8 +4,6 @@ import os
 from pydantic import BaseModel 
 from connection import connect_engine
 from models import Users
-from mangum import Mangum
-
 
 engine = connect_engine()
 session = engine.sessionmaker()
