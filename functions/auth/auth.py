@@ -16,8 +16,15 @@ def handler(event, context):
     "redirect_uri" : os.environ.get('KAKAO_CALLBACK_URL'),
     "code" : ''
     }
-    return {'auth': auth_data, 'event': event}
-
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS, GET'
+        },
+        'body': event
+    }
     # # 인가 코드로 토큰 요청
     # response = requests.post(kakao_auth_url, data=auth_data)
     # token_data = response.json()
