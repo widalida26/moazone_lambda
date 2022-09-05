@@ -22,8 +22,11 @@ def handler(event, context):
 
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
-    session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
+    newUser = Users(user_id = user_id, consent = 1)
+    print(newUser)
+    session.add(newUser)
     session.commit()
+    # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
 
     # new survey 데이터 삽입
     dt = body_data['survey_data']
