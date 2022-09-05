@@ -18,13 +18,15 @@ def dday_calculator(day):
     return dday.days
 
 def handler(event, context):
+    body_data = json.loads(event['body'])
+
     # users 동의 여부 업데이트
-    # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
-    # session.commit()
+    user_id = body_data['user_id']
+    session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
+    session.commit()
 
     # new survey 데이터 삽입
-    body_data = json.loads(event["body"])
-    dt = body_data["survey_data"]
+    dt = body_data['survey_data']
 
     survey_info = SurveyInfo(
         gender = dt['gender'][0],
