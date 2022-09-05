@@ -22,6 +22,7 @@ def handler(event, context):
     # session.commit()
 
     # new survey 데이터 삽입
+    print(event.keys())
     dt = event["survey_data"]
     survey_info = SurveyInfo(
         gender = dt['gender'][0],
