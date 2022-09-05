@@ -26,7 +26,6 @@ def handler(event, context):
     body_data = json.loads(event["body"])
     dt = body_data["survey_data"]
 
-    dt = event["survey_data"]
     survey_info = SurveyInfo(
         gender = dt['gender'][0],
         car = dt['car'][0],
