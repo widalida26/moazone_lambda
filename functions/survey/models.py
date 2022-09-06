@@ -11,7 +11,7 @@ class Customers(Base):
 
 class SurveyInfo(Base):
     __tablename__ = 'new'
-    index = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
+    index = Column(TEXT, nullable=False, primary_key=True)
     gender = Column(TEXT)
     car = Column(TEXT)
     reality = Column(TEXT)
