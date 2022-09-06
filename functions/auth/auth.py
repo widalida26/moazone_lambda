@@ -11,7 +11,7 @@ def handler(event, context):
     #body_data = ''
     headers = event['headers']
     print(headers.keys())
-    queryStr = headers['queryStringParameters']
+    queryStr = event['queryStringParameters']
     print(queryStr)
     print(type(queryStr))
     user_id = queryStr['user_id']
