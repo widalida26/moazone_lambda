@@ -1,11 +1,7 @@
 import json
-from xml.sax.handler import DTDHandler
-import requests
-import os
 from datetime import datetime
-from pydantic import BaseModel 
 from connection import connect_engine
-from models import Users
+from models import Customers
 from models import SurveyInfo
 
 engine = connect_engine()
@@ -22,15 +18,15 @@ def handler(event, context):
 
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
-    newUser = Users(user_id = user_id, consent = 1)
-    print(newUser)
-    session.add(newUser)
+    currUser = session.query().filter(Customers.user_id==user_id).one()
+    print(currUser)
+
+    # session.add(newUser)
     session.commit()
     # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
 
     # new survey 데이터 삽입
     dt = body_data['survey_data']
-
     survey_info = SurveyInfo(
         gender = dt['gender'][0],
         car = dt['car'][0],
@@ -52,8 +48,8 @@ def handler(event, context):
         begin_month = dday_calculator(dt['begin_month'][0:10]),
     )
 
-    session.add(survey_info)
-    session.commit()
+    # session.add(survey_info)
+    # session.commit()
 
     return {
         'statusCode': 201,
