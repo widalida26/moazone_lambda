@@ -8,8 +8,10 @@ session = engine.sessionmaker()
 def handler(event, context):
     print(event)
     print(type(event))
-    body_data = json.loads(event["body"].decode('utf-8'))
-    user_id = body_data["user_id"]
+    #body_data = ''
+    #json.loads(event["body"].decode('utf-8'))
+    user_id = ''
+    #body_data["user_id"]
 
     existed = session.query(Customers).filter(Customers.user_id == user_id).all()
     consented = session.query(Customers).filter(Customers.user_id == user_id, Customers.consent == 1).all()
