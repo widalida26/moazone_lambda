@@ -9,7 +9,15 @@ def handler(event, context):
     print(event)
     print(type(event))
     #body_data = ''
-    #json.loads(event["body"].decode('utf-8'))
+    headers = json.loads(event['headers'])
+    print(headers)
+    print(type(headers))
+    queryStr = json.loads(headers['queryStringParameters'])
+    print(queryStr)
+    print(type(queryStr))
+    user_id = json.loads(queryStr['user_id'])
+    print(user_id)
+
     user_id = ''
     #body_data["user_id"]
 
