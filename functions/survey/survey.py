@@ -18,7 +18,7 @@ def handler(event, context):
 
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
-    currUser = session.query().filter(Customers.user_id==user_id).one()
+    currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
     print(currUser)
 
     # session.add(newUser)
