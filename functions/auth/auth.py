@@ -9,7 +9,7 @@ def handler(event, context):
     print(event)
     print(type(event))
     #body_data = ''
-    headers = json.loads(event['headers'])
+    headers = event['headers']
     print(headers)
     print(type(headers))
     queryStr = json.loads(headers['queryStringParameters'])
