@@ -19,7 +19,8 @@ def handler(event, context):
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
     currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
-    print(currUser['user_id'])
+    print(len(currUser))
+    # print(currUser['user_id'])
 
     # session.add(newUser)
     session.commit()
