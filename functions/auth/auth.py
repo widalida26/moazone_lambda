@@ -10,6 +10,7 @@ def handler(event, context):
     print(type(event))
     #body_data = ''
     headers = event['headers']
+    print(headers.keys())
     queryStr = headers['queryStringParameters']
     print(queryStr)
     print(type(queryStr))
