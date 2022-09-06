@@ -1,3 +1,4 @@
+import requests
 import json
 from connection import connect_engine
 from models import Customers
@@ -8,7 +9,7 @@ session = engine.sessionmaker()
 def handler(event, context):
     print(event)
     print(type(event))
-    body_data = json.loads(event["body"])
+    body_data = json.loads(event["body"].decode('utf-8'))
     user_id = body_data["user_id"]
 
     existed = session.query(Customers).filter(Customers.user_id == user_id).all()
