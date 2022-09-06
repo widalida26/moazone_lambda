@@ -20,14 +20,10 @@ def handler(event, context):
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
     currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
-    print(dict(currUser))
-    # currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
-    # print(currUser._asdict())
-    # print(currUser['user_id'])
+    currUser.consent = 1
 
-    # session.add(newUser)
+    session.add(currUser)
     session.commit()
-    # session.query(Users).filter(Users.user_id == user_id).update({ Users.consent: 1 })
 
     # new survey 데이터 삽입
     dt = body_data['survey_data']
@@ -52,8 +48,8 @@ def handler(event, context):
         begin_month = dday_calculator(dt['begin_month'][0:10]),
     )
 
-    # session.add(survey_info)
-    # session.commit()
+    session.add(survey_info)
+    session.commit()
 
     return {
         'statusCode': 201,
