@@ -10,12 +10,10 @@ def handler(event, context):
     print(type(event))
     #body_data = ''
     headers = event['headers']
-    print(headers)
-    print(type(headers))
-    queryStr = json.loads(headers['queryStringParameters'])
+    queryStr = headers['queryStringParameters']
     print(queryStr)
     print(type(queryStr))
-    user_id = json.loads(queryStr['user_id'])
+    user_id = queryStr['user_id']
     print(user_id)
 
     user_id = ''
