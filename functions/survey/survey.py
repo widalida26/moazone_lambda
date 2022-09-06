@@ -3,6 +3,7 @@ from datetime import datetime
 from connection import connect_engine
 from models import Customers
 from models import SurveyInfo
+from dataclasses import dataclass, asdict
 
 engine = connect_engine()
 session = engine.sessionmaker()
@@ -19,7 +20,9 @@ def handler(event, context):
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
     currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
-    print(len(currUser))
+    print(dict(currUser))
+    # currUser = session.query(Customers).filter(Customers.user_id == user_id).one()
+    # print(currUser._asdict())
     # print(currUser['user_id'])
 
     # session.add(newUser)
