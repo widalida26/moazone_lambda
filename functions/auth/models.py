@@ -1,7 +1,13 @@
-from sqlalchemy import Column, TEXT, Integer
+from sqlalchemy import Column, TEXT, Integer, Float
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
+
+class Customers(Base):
+    __tablename__ = 'customers'
+    user_id = Column(TEXT, nullable=False, primary_key=True)
+    credit = Column(Float, nullable=False)
+    consent = Column(Integer)
 
 class Users(Base):
     __tablename__ = 'users'
