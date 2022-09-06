@@ -22,7 +22,7 @@ def handler(event, context):
             },
             'body': json.dumps({ "message" : "not targeted" })
         }
-    elif len(consented) > 1:
+    elif len(consented) > 0:
         return {
             'statusCode': 200,
             'headers': {
