@@ -12,6 +12,11 @@ def handler(event, context):
     existed = session.query(Customers).filter(Customers.user_id == user_id).all()
     consented = session.query(Customers).filter(Customers.user_id == user_id, Customers.consent == 1).all()
 
+    for row in existed:
+        print(row.consent)
+    for row in consented:
+        print(consented)
+
     if len(existed) < 1: 
         return {
             'statusCode': 200,
