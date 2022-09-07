@@ -19,7 +19,7 @@ def handler(event, context):
 
     # users 동의 여부 업데이트
     user_id = body_data['user_id']
-    currUser = session.query(Customers).filter(Customers.user_id == user_id).update({ 'consent': 1 })
+    session.query(Customers).filter(Customers.user_id == user_id).update({ 'consent': 1 })
     session.commit()
 
     # new survey 데이터 삽입
