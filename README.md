@@ -1,1 +1,1 @@
-Lambda Function for Backend API Server in Moazone Cloud Project
+lambda function for backend API server in moazone project
